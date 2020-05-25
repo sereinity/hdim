@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Compute size data about hypercube and other cool object
+Compute size data about tesseract and other n-dimensional-cubes
 """
 
 # time measures:
@@ -29,14 +29,14 @@ def compute(max_dim, cell_size, no_highlight=False):
         obj = increase(tee[1])
 
 
-def increase(hyper):
+def increase(n_cube):
     """
-    Transform an hyper cube (or point, line, cube def) of dimension N to N+1
-    hc is a set of number of object of each dimensions).
+    Transform a n-cube (or dot) of dimension N to N+1
+    n_cube is a set of number of object of each dimensions).
     ex: for a cube there is 1 object of dimension 3, 4 edges, 8 nodes.
     """
     last = 0
-    for dim in hyper:
+    for dim in n_cube:
         yield last + dim*2
         last = dim
     yield 1

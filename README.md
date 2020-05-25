@@ -5,7 +5,7 @@
 
 Studding number of object in each dimensions for a « cube ».
 By example, a cube has 6 faces, 12 edges, 8 nodes.
-An hypercube has 8 cubes, 24 faces, 32 edges, 16 nodes.
+A tesseract has 8 cubes, 24 faces, 32 edges, 16 nodes.
 A 10-dimensional composed of 18 9-dimensional-cubes …
 
 This program generates incrementally the number of each n-cube (and nodes, dimension 0) present in n-cubes.
@@ -24,7 +24,7 @@ Should keep a really low memory footprint, even when querying tons of elements.
 ```
 usage: hdim.py [-h] [--cell-size SIZE] [--raw] [--no-highlight] [--force] [max_dim]
 
-Compute size data about hypercube and other cool object
+Compute size data about tesseract and other n-dimensional-cubes
 
 positional arguments:
   max_dim             Maximum dimension cardinality, horizontal fill if set to 0, infinite if set to -1 (default: 5)
