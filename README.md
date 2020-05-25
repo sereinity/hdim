@@ -58,4 +58,11 @@ optional arguments:
 
 ## Next
 
-I don't know, just sharing, create issues if you have any ideas.
+I don't know, just sharing, create issues if you have any ideas ; or even better: open merge requests.
+
+If people ask for it, I could:
+
+- start by providing a proper packaging
+- add Windows compatibility (with little help to test)
+- add some headings in the output
+- add an index on each row
