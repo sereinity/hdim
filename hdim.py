@@ -17,7 +17,7 @@ from colorama import Style
 MAX_DIM = 20
 
 
-def compute(max_dim, cell_size, no_enlight=False):
+def compute(max_dim, cell_size, no_highlight=False):
     """
     Create a node, and then print dimensions of each object of greater dimension
     """
@@ -25,7 +25,7 @@ def compute(max_dim, cell_size, no_enlight=False):
     for cardinality in local_range(max_dim):
         tee = itertools.tee(obj)
         obj = increase(tuple())
-        display(tee[0], cell_size, cardinality, no_enlight)
+        display(tee[0], cell_size, cardinality, no_highlight)
         obj = increase(tee[1])
 
 
@@ -42,7 +42,7 @@ def increase(hyper):
     yield 1
 
 
-def display(obj, cell_size, cardinality, no_enlight):
+def display(obj, cell_size, cardinality, no_highlight):
     """
     Pretty display of a array
 
@@ -53,7 +53,7 @@ def display(obj, cell_size, cardinality, no_enlight):
     maximum = max(tee[1])
     id_elem = 0
     for cnt in tee[0]:
-        if not no_enlight and cnt == maximum:
+        if not no_highlight and cnt == maximum:
             print(f'{Style.BRIGHT}{cnt:-{cell_size}}{Style.RESET_ALL}', end='')
         else:
             print(f'{cnt:-{cell_size}}', end='')
@@ -82,10 +82,10 @@ def build_argp():
         help="Maximum cell size for display, '0' means auto")
     parser.add_argument(
         '--raw', '-r', action="store_true",
-        help="Sets cell size to 1 and disable enlights")
+        help="Sets cell size to 1 and disable highlights")
     parser.add_argument(
-        '--no-enlight', '-c', action="store_true",
-        help="Do not enlight elements")
+        '--no-highlight', '-c', action="store_true",
+        help="Do not highlight elements")
     parser.add_argument(
         '--force', '-f', action="store_true",
         help="Run, even if it breaks display")
@@ -119,7 +119,7 @@ def main():
     parameters = parser.parse_args()
     max_dim = parameters.max_dim
     cell_size = parameters.size
-    no_enlight = parameters.no_enlight
+    no_highlight = parameters.no_highlight
     terminal_width = shutil.get_terminal_size()[0]
     if max_dim == 0:
         max_dim = ideal_max_dim(terminal_width)
@@ -127,7 +127,7 @@ def main():
         max_dim = None
     if parameters.raw:
         cell_size = 1
-        no_enlight = True
+        no_highlight = True
     if cell_size == 0:
         if max_dim is None:
             cell_size = 1
@@ -138,7 +138,7 @@ def main():
         if not parameters.force and max_line_size > terminal_width:
             print('Line will be too long')
             raise SystemExit(1)
-    compute(max_dim, cell_size, no_enlight)
+    compute(max_dim, cell_size, no_highlight)
 
 if __name__ == "__main__":
     main()
