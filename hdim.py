@@ -94,7 +94,7 @@ def build_argp():
 
 def local_range(stop):
     """
-    Locally defined range() to support inifite loop
+    Locally defined range() to support infinite loop
     """
     pos = 0
     while stop is None or (pos < stop):
@@ -104,7 +104,7 @@ def local_range(stop):
 
 def ideal_max_dim(term_size):
     """
-    Compute ideal miximal dimension for a pretty display
+    Compute ideal maximal dimension for a pretty display
     """
     delta = 1 + 2*(term_size+1)
     sol = (-1 + math.sqrt(delta))
