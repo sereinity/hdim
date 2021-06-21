@@ -4,7 +4,7 @@ Compute size data about tesseract and other n-dimensional-cubes
 """
 
 # time measures:
-# time ./test.py 1000 > /dev/nul
+# time ./hdim.py -f -f 1000 > /dev/nul
 # 1.69sec
 
 import argparse
@@ -138,7 +138,10 @@ def main():
         if not parameters.force and max_line_size > terminal_width:
             print('Line will be too long')
             raise SystemExit(1)
-    compute(max_dim, cell_size, no_highlight)
+    try:
+        compute(max_dim, cell_size, no_highlight)
+    except BrokenPipeError:
+        pass
 
 if __name__ == "__main__":
     main()
