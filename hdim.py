@@ -19,7 +19,8 @@ MAX_DIM = 20
 
 def compute(max_dim, cell_size, no_highlight=False):
     """
-    Create a node, and then print dimensions of each object of greater dimension
+    Create a node, and then print dimensions of each object of greater
+    dimension
     """
     obj = increase(tuple())
     for cardinality in local_range(max_dim):
@@ -107,7 +108,7 @@ def ideal_max_dim(term_size):
     Compute ideal maximal dimension for a pretty display
     """
     delta = 1 + 2*(term_size+1)
-    sol = (-1 + math.sqrt(delta))
+    sol = math.sqrt(delta) - 1
     return math.floor(sol)
 
 
@@ -142,6 +143,7 @@ def main():
         compute(max_dim, cell_size, no_highlight)
     except BrokenPipeError:
         pass
+
 
 if __name__ == "__main__":
     main()
